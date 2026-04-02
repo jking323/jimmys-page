@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jimmy's Cigars — Melbourne, FL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --mahogany:   #2c1206;
+      --dark-brown: #3d1c02;
+      --mid-brown:  #5c3317;
+      --tan:        #8b6340;
+      --gold:       #c9a84c;
+      --gold-light: #e0c474;
+      --cream:      #f5f0e8;
+      --warm-white: #faf7f2;
+      --smoke:      #9a8878;
+      --text-dark:  #1e0e02;
+      --text-mid:   #4a3020;
+      --radius:     10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', system-ui, sans-serif;
+      background: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(28, 10, 2, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background:
+        linear-gradient(to bottom, rgba(20,7,1,0.65) 0%, rgba(44,18,6,0.82) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      color: var(--warm-white);
+      line-height: 1.0;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: rgba(245,240,232,0.82);
+      max-width: 520px;
+      margin: 22px auto 44px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .hero-tagline strong { color: var(--gold-light); font-weight: 400; }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.22s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--mahogany);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(245,240,232,0.35);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 88px 24px; }
+    .section-inner { max-width: 1180px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      color: var(--dark-brown);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      color: var(--text-mid);
+      font-size: 1rem;
+      max-width: 540px;
+      font-weight: 300;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 24px 0 44px;
+      border-radius: 2px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .about-text p strong {
+      color: var(--dark-brown);
+      font-weight: 700;
+    }
+
+    /* ── DAILY NEWS SPOTLIGHT ── */
+    .daily-news-section {
+      background: var(--mahogany);
+      padding: 88px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .daily-news-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(255,255,255,0.018) 28px,
+        rgba(255,255,255,0.018) 29px
+      );
+      pointer-events: none;
+    }
+
+    .dn-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .dn-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--mahogany);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+
+    .dn-masthead {
+      font-family: 'UnifrakturMaguntia', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: var(--cream);
+      line-height: 1.0;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .dn-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 28px;
+      letter-spacing: 0.03em;
+    }
+
+    .dn-story p {
+      color: rgba(245,240,232,0.78);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .dn-story p strong { color: var(--gold-light); font-weight: 400; }
+
+    .dn-stat-row {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .dn-stat {
+      text-align: center;
+    }
+
+    .dn-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .dn-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-top: 4px;
+    }
+
+    .dn-bands {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .dn-band-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .dn-band-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(201,168,76,0.45);
+    }
+
+    .dn-band-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .dn-band-profile {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .dn-tag {
+      font-size: 0.66rem;
+      padding: 2px 8px;
+      border-radius: 50px;
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .dn-band-desc {
+      font-size: 0.87rem;
+      color: rgba(245,240,232,0.65);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── BRANDS ── */
+    .brands { background: var(--warm-white); }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 24px;
+    }
+
+    .brand-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 26px 24px;
+      border: 1px solid rgba(92,51,23,0.1);
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--mid-brown));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s;
+    }
+
+    .brand-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(44,18,6,0.09);
+      border-color: rgba(201,168,76,0.3);
+    }
+
+    .brand-card:hover::before { transform: scaleX(1); }
+
+    .brand-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--dark-brown);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .brand-origin {
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      background: rgba(201,168,76,0.1);
+      padding: 3px 9px;
+      border-radius: 50px;
+      white-space: nowrap;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .brand-profile {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .profile-tag {
+      font-size: 0.67rem;
+      padding: 2px 9px;
+      border-radius: 50px;
+      border: 1px solid rgba(92,51,23,0.18);
+      color: var(--text-mid);
+      letter-spacing: 0.04em;
+    }
+
+    .brand-desc {
+      color: var(--text-mid);
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .strength-bar {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .strength-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      width: 52px;
+      flex-shrink: 0;
+    }
+
+    .strength-track {
+      flex: 1;
+      height: 4px;
+      background: rgba(92,51,23,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--mid-brown));
+    }
+
+    /* ── WHY WE'RE HERE STRIP ── */
+    .vibes {
+      background: #2a1505;
+      color: var(--cream);
+      padding: 80px 24px;
+    }
+
+    .vibes .section-title { color: var(--cream); }
+    .vibes .section-sub { color: var(--smoke); max-width: 620px; }
+
+    .vibes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .vibe-item {
+      padding: 28px 22px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.12);
+      transition: background 0.2s;
+    }
+
+    .vibe-item:hover { background: rgba(255,255,255,0.07); }
+
+    .vibe-icon { font-size: 1.7rem; margin-bottom: 12px; }
+
+    .vibe-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      margin-bottom: 7px;
+    }
+
+    .vibe-item p {
+      font-size: 0.87rem;
+      color: var(--smoke);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--cream); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--dark-brown);
+      margin-bottom: 22px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .contact-icon { font-size: 1.05rem; margin-top: 2px; }
+
+    .contact-item strong {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .contact-item span {
+      font-size: 0.94rem;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 20px;
+      margin-top: 6px;
+    }
+
+    .hours-grid dt { font-size: 0.87rem; color: var(--text-dark); font-weight: 700; }
+    .hours-grid dd { font-size: 0.87rem; color: var(--text-mid); font-weight: 300; }
+
+    .contact-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: rgba(92,51,23,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(92,51,23,0.1);
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* ── CONTACT FORM ── */
+    .contact-form-wrap {
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(92,51,23,0.12);
+    }
+
+    .contact-form-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--dark-brown);
+      margin-bottom: 6px;
+    }
+
+    .contact-form-wrap p.form-sub {
+      color: var(--text-mid);
+      font-size: 0.93rem;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field.full { grid-column: 1 / -1; }
+
+    .form-field label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      background: #fff;
+      border: 1px solid rgba(92,51,23,0.18);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+    }
+
+    .form-field textarea { min-height: 130px; resize: vertical; }
+
+    .form-submit {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--smoke);
+      font-weight: 300;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(92,51,23,0.06);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      color: var(--mid-brown);
+      font-size: 0.93rem;
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 600px) {
+      .contact-form { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: 1; }
+      .form-submit { grid-column: 1; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--mahogany);
+      color: var(--smoke);
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    footer p { font-size: 0.8rem; opacity: 0.55; margin-top: 6px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .dn-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 18px; }
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-img { display: none; }
+      section { padding: 64px 18px; }
+      .daily-news-section { padding: 64px 18px; }
+    }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    .brands-grid .brand-card:nth-child(1) { transition-delay: 0.05s; }
+    .brands-grid .brand-card:nth-child(2) { transition-delay: 0.10s; }
+    .brands-grid .brand-card:nth-child(3) { transition-delay: 0.15s; }
+    .brands-grid .brand-card:nth-child(4) { transition-delay: 0.20s; }
+    .brands-grid .brand-card:nth-child(5) { transition-delay: 0.25s; }
+    .brands-grid .brand-card:nth-child(6) { transition-delay: 0.30s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Jimmy's Cigars</a>
+    <ul class="nav-links">
+      <li><a href="#daily-news">Daily News</a></li>
+      <li><a href="#brands">Our Brands</a></li>
+      <li><a href="#vibes">The Lounge</a></li>
+      <li><a href="#contact">Find Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <p class="hero-eyebrow">Melbourne, FL &nbsp;·&nbsp; Cigar Lounge</p>
+    <h1>Jimmy's<br /><em>Cigars</em></h1>
+    <p class="hero-tagline">
+      The <strong>Cheers</strong> of cigar lounges on the Space Coast.<br />
+      Pull up a chair, light one up, and stay a while.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#daily-news">Meet the Daily News</a>
+      <a class="btn btn-outline" href="#contact">Come See Us</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1614867609894-e1d3e00e2e9a?w=800&q=80" alt="Inside Jimmy's Cigars" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">Melbourne, FL</p>
+          <h2 class="section-title">Everybody's got<br />a seat here.</h2>
+          <div class="divider"></div>
+          <p>Jimmy's isn't a members-only club with a velvet rope — it's your neighborhood cigar lounge where <strong>the regulars know each other by name</strong>, the humidor is always full, and there's no such thing as a dumb question about tobacco.</p>
+          <p>We carry boutique lines that we actually love, cut out the brands that don't earn their shelf space, and give you straight talk about what's in the case. If you're new to cigars, great — we'll point you somewhere good. If you've been smoking for 30 years, pull up a chair and tell us about it.</p>
+          <a class="btn btn-primary" href="#brands" style="margin-top:8px;">See What's in the Case</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAILY NEWS SPOTLIGHT -->
+  <section class="daily-news-section" id="daily-news">
+    <div class="dn-inner">
+      <div class="dn-story">
+        <span class="dn-badge">Born at Jimmy's &nbsp;·&nbsp; Melbourne, FL</span>
+        <div class="dn-masthead">The Daily News</div>
+        <p class="dn-sub">Our cigar. Our story. Now all over the country.</p>
+
+        <p>The Daily News was blended by our friend Z at <strong>Córdoba &amp; Morales</strong> — it started life as his event cigar. Z would set up at events and roll right in front of customers, and that cigar he was rolling was something special.</p>
+        <p>We noticed. So we did what any good regulars would do: <strong>we pestered him.</strong> Relentlessly. For a while. Until he finally gave in and agreed to start selling it to us at Jimmy's.</p>
+        <p>That's when word got out. Now the Daily News is carried in shops all over the country — and we couldn't be prouder of Z for what he built. We're just glad we were annoying enough to make it happen. We keep the freshest stock right here, where it first hit a shelf.</p>
+
+        <div class="dn-stat-row">
+          <div class="dn-stat">
+            <div class="dn-stat-num">Z</div>
+            <div class="dn-stat-label">The Blender Behind It</div>
+          </div>
+          <div class="dn-stat">
+            <div class="dn-stat-num">3</div>
+            <div class="dn-stat-label">Wrappers to Choose From</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dn-bands">
+        <div class="dn-band-card fade-up">
+          <div class="dn-band-title">Daily News — Connecticut &nbsp;<span style="font-family:'Lato',sans-serif;font-size:0.75rem;font-weight:300;color:var(--smoke);">Toro</span></div>
+          <div class="dn-band-profile">
+            <span class="dn-tag">Mild-Medium</span>
+            <span class="dn-tag">Creamy</span>
+            <span class="dn-tag">Cedar</span>
+          </div>
+          <p class="dn-band-desc">The smoothest of the three. A natural Connecticut shade wrapper gives it an easy, creamy draw that's great any time of day — especially if you want something you can smoke start to finish without slowing down.</p>
+        </div>
+
+        <div class="dn-band-card fade-up">
+          <div class="dn-band-title">Daily News — Habano &nbsp;<span style="font-family:'Lato',sans-serif;font-size:0.75rem;font-weight:300;color:var(--smoke);">Toro</span></div>
+          <div class="dn-band-profile">
+            <span class="dn-tag">Medium</span>
+            <span class="dn-tag">Pepper</span>
+            <span class="dn-tag">Earthy</span>
+          </div>
+          <p class="dn-band-desc">A Habano wrapper brings a little more body and a touch of spice to Z's blend. This one has some kick to it without going full throttle — a great middle ground for daily smokers who want a bit more going on.</p>
+        </div>
+
+        <div class="dn-band-card fade-up">
+          <div class="dn-band-title">Daily News — Maduro &nbsp;<span style="font-family:'Lato',sans-serif;font-size:0.75rem;font-weight:300;color:var(--smoke);">Toro</span></div>
+          <div class="dn-band-profile">
+            <span class="dn-tag">Medium-Full</span>
+            <span class="dn-tag">Dark Chocolate</span>
+            <span class="dn-tag">Sweet Finish</span>
+          </div>
+          <p class="dn-band-desc">The darkest and boldest of the three. The maduro wrapper adds a natural sweetness and a rich, dark complexity that rounds out beautifully by the last third. If you like a full-flavored smoke, start here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="brands" id="brands">
+    <div class="section-inner">
+      <p class="section-label">What We Carry</p>
+      <h2 class="section-title">Brands We Stand Behind</h2>
+      <p class="section-sub">We don't stock everything — we stock what we'd smoke ourselves. Here's what earns a spot in our humidor.</p>
+      <div class="divider"></div>
+
+      <div class="brands-grid" id="brands-grid">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- VIBES / THE LOUNGE -->
+  <section class="vibes" id="vibes">
+    <div class="section-inner">
+      <p class="section-label">The Lounge</p>
+      <h2 class="section-title">Why regulars keep coming back</h2>
+      <p class="section-sub">We're not trying to be fancy. We're trying to be the place you want to be at the end of a long day.</p>
+      <div class="vibes-grid">
+        <div class="vibe-item fade-up">
+          <div class="vibe-icon">🚪</div>
+          <h3>Walk-In Humidor</h3>
+          <p>Dialed in at 70°/70% and restocked regularly. Singles, boxes, samplers — come in and browse.</p>
+        </div>
+        <div class="vibe-item fade-up">
+          <div class="vibe-icon">🪑</div>
+          <h3>Lounge Seating</h3>
+          <p>Real chairs, good lighting, and a place where you're allowed to just sit and smoke without anyone rushing you out.</p>
+        </div>
+        <div class="vibe-item fade-up">
+          <div class="vibe-icon">💬</div>
+          <h3>No Pressure Advice</h3>
+          <p>We'll tell you what we actually think. First time smoker or 20-year veteran, we talk to you the same way.</p>
+        </div>
+        <div class="vibe-item fade-up">
+          <div class="vibe-icon">📬</div>
+          <h3>Special Orders</h3>
+          <p>Can't find what you're looking for in the case? Ask us. We'll chase it down or build you a box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-label">Melbourne, FL</p>
+          <h3>Come hang out</h3>
+          <div class="divider" style="margin-bottom:28px;"></div>
+
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <strong>Address</strong>
+              <span>1220 West New Haven Ave<br />West Melbourne, FL 32904</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              <span>(321) 000-0000</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">🕐</span>
+            <div>
+              <strong>Hours</strong>
+              <dl class="hours-grid">
+                <dt>Mon–Thu</dt><dd>10 am – 9 pm</dd>
+                <dt>Fri–Sat</dt><dd>10 am – 10 pm</dd>
+                <dt>Sunday</dt><dd>11 am – 9 pm</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">✌️</span>
+            <div>
+              <strong>Walk-ins welcome</strong>
+              <span>No reservation needed. Just show up.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <iframe
+            src="https://maps.google.com/maps?q=1220+West+New+Haven+Ave,+West+Melbourne,+FL+32904&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Jimmy's Cigars on Google Maps">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="contact-form-wrap fade-up">
+        <h3>Send us a message</h3>
+        <p class="form-sub">Questions about what's in the case, special orders, events — whatever's on your mind.</p>
+
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://formspree.io/f/xdaplyjz"
+          method="POST">
+
+          <div class="form-field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jimmy" required />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone <span style="font-weight:300;text-transform:none;letter-spacing:0;">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(321) 000-0000" />
+          </div>
+
+          <div class="form-field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Special order, question, etc." />
+          </div>
+
+          <div class="form-field full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Send It</button>
+            <span class="form-note">We'll get back to you as soon as we can — usually same day.</span>
+          </div>
+
+          <div class="form-success" id="form-success">
+            Thanks — got your message. We'll be in touch soon. In the meantime, come by anytime.
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Jimmy's Cigars</div>
+    <p>Melbourne, FL &nbsp;·&nbsp; Home of the Daily News</p>
+    <p style="margin-top:14px;">© 2026 Jimmy's Cigars. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const brands = [
+      {
+        name: "Perdomo",
+        origin: "Nicaragua",
+        strength: 3.5,
+        profile: ["Medium-Full", "Vanilla", "Leather"],
+        desc: "Nick Perdomo grows his own tobacco on family-owned farms in Nicaragua — seed to smoke, no middleman, no shortcuts. The 20th Anniversary and Habano series are the ones we keep fully stocked. Exceptionally consistent and priced right for a cigar you'll come back to all week."
+      },
+      {
+        name: "My Father Cigars",
+        origin: "Nicaragua",
+        strength: 4.5,
+        profile: ["Full", "Dark Leather", "Earth"],
+        desc: "Pepin Garcia started rolling cigars in his Miami garage and people lined up around the block. Now My Father is one of the most respected names in the business, full stop. Le Bijou 1922 is a serious full-body smoke — if you haven't tried it, we'll fix that."
+      },
+      {
+        name: "Crux",
+        origin: "Nicaragua",
+        strength: 3,
+        profile: ["Medium", "Pepper", "Toasted Wood"],
+        desc: "Crux is a newer boutique house that doesn't have a lot of hype attached to it, which is part of why we like it. The Epicure and PB5 are regulars in our humidor — well-built sticks with genuine complexity at a price that doesn't ask you to make a decision about it."
+      },
+      {
+        name: "Roma Craft Tobac",
+        origin: "Nicaragua",
+        strength: 4,
+        profile: ["Full", "Rich", "Complex"],
+        desc: "Michael Sperlazza keeps Roma Craft intentionally small, and it shows in every cigar. These aren't mass-produced — they're made with a level of care that's getting rare. Intemperance and Neanderthal have loyal followings here for a reason. Try one and you'll get it."
+      },
+      {
+        name: "Ramon Bueso",
+        origin: "Honduras",
+        strength: 3,
+        profile: ["Medium", "Nutty", "Smooth"],
+        desc: "Honduras deserves more credit than it gets, and Ramon Bueso makes a strong case for it. These are honest, well-crafted cigars that won't cost you a fortune and won't disappoint you either. Genesis is the standout — the kind of smoke you reach for on a regular Tuesday."
+      },
+      {
+        name: "The Daily News",
+        origin: "Born in Melbourne, FL",
+        strength: 2.5,
+        profile: ["Everyday Smoke", "Smooth", "Reliable"],
+        desc: "Ours. Born right here at Jimmy's, now in shops across the country. The Daily News was built to be the cigar you'd want in your hand on any given day — not too heavy, not too light, burns clean every time. We keep the freshest supply in the case where it started."
+      }
+    ];
+
+    function renderBrands() {
+      const grid = document.getElementById('brands-grid');
+      grid.innerHTML = brands.map((b, i) => {
+        const pct = (b.strength / 5) * 100;
+        const tags = b.profile.map(t => `<span class="profile-tag">${t}</span>`).join('');
+        const isDaily = b.name === 'The Daily News';
+        return `
+          <div class="brand-card fade-up" ${isDaily ? 'style="border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.03);"' : ''}>
+            <div class="brand-header">
+              <span class="brand-name">${b.name}</span>
+              <span class="brand-origin">${b.origin}</span>
+            </div>
+            <div class="brand-profile">${tags}</div>
+            <p class="brand-desc">${b.desc}</p>
+            <div class="strength-bar">
+              <span class="strength-label">Strength</span>
+              <div class="strength-track">
+                <div class="strength-fill" style="width:${pct}%"></div>
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+      observeAll();
+    }
+
+    function observeAll() {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.07 });
+
+      document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+    }
+
+    renderBrands();
+
+    // ── Formspree AJAX submit ─────────────────────────────────────────────────
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          successMsg.style.display = 'block';
+          btn.style.display = 'none';
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
